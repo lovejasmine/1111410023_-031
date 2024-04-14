@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1111410023_詹凱晴031
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] words = new string[1];
+            Console.WriteLine("input word:");
+            words[0] = Console.ReadLine();
+
+            Console.WriteLine("請輸入要搜尋的字元 (小寫英文字母):");
+            char x = Console.ReadKey().KeyChar;
+            Console.WriteLine(); // 換行
+
+            int[] result = FindWords(words, x);
+
+            if (result == null)
+            {
+                Console.WriteLine("未找到符合條件");
+            }
+            else
+            {
+                Console.WriteLine("結果:");
+
+                foreach (var index in result)
+                {
+                    Console.WriteLine(words[index]);
+                }
+            }
+        }
+
+        static int[] FindWords(string[] words, char x)
+        {
+            List<int> indexes = new List<int>();
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i].Contains(x))
+                {
+                    indexes.Add(i);
+                }
+            }
+
+            return indexes.ToArray();
+        }
+    }
+}
